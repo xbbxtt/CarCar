@@ -6,7 +6,7 @@ from django.http import JsonResponse
 from common.json import ModelEncoder
 
 
-class AutomobileVODetailEncoder(ModelEncoder):
+class AutomobileVOListEncoder(ModelEncoder):
     model = AutomobileVO
     properties = ["vin", "sold", "id"]
 
@@ -217,3 +217,17 @@ def api_finish_appointment(request, pk):
                 {"message": "Appointment does not exist"},
                 status=400,
             )
+
+@require_http_methods(["GET"])
+def api_list_automobileVOs(request):
+    try:
+        automobileVOs = AutomobileVO.objects.all()
+    except AutomobileVO.DoesNotExist:
+        return JsonResponse(
+            {"message": "Page not exist"},
+            status=404,
+        )
+    return JsonResponse(
+        {"technicians": automobileVOs},
+        encoder=AutomobileVOListEncoder,
+    )
