@@ -22,7 +22,7 @@ def get_automobile():
     for automobile in content["autos"]:
         AutomobileVO.objects.update_or_create(
             vin = automobile["vin"],
-            defaults={"sold": bin["sold"]},
+            defaults={"sold": automobile["sold"]},
         )
 
 
