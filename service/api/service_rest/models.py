@@ -6,6 +6,9 @@ class Technician(models.Model):
     last_name = models.CharField(max_length=50)
     employee_id = models.CharField(max_length=50)
 
+    class Meta:
+        ordering = ("employee_id",)
+
 class AutomobileVO(models.Model):
     vin = models.CharField(max_length=50)
     sold = models.BooleanField()
@@ -21,3 +24,5 @@ class Appointment(models.Model):
         related_name="appointment",
         on_delete=models.CASCADE,
     )
+    class Meta:
+        ordering = ("date_time",)
