@@ -4,6 +4,7 @@ import Nav from './Nav';
 import TechnicianList from './TechnicianList';
 import TechnicianForm from './TechnicianForm';
 import TechnicianDetail from './TechnicianDetail';
+import AppointmentList from './AppointmentList';
 
 function App() {
   return (
@@ -16,6 +17,11 @@ function App() {
             <Route index element={<TechnicianList />} />
             <Route path="new" element={<TechnicianForm />} />
             <Route path=":id" element={<TechnicianDetail />} />
+          </Route>
+          <Route path="appointments">
+            <Route index element={<AppointmentList />} />
+            {/* <Route path="new" element={<TechnicianForm />} />
+            <Route path=":id" element={<TechnicianDetail />} /> */}
           </Route>
         </Routes>
       </div>

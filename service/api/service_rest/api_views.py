@@ -26,9 +26,15 @@ class AppointmentListEncoder(ModelEncoder):
     properties = [
         "date_time",
         "vin",
+        "reason",
+        "customer",
+        "technician",
         "status",
         "id",
     ]
+    encoders = {
+        "technician": TechnicianDetailEncoder(),
+    }
 
 
 class AppointmentDetailEncoder(ModelEncoder):
@@ -228,6 +234,6 @@ def api_list_automobileVOs(request):
             status=404,
         )
     return JsonResponse(
-        {"technicians": automobileVOs},
+        {"automobileVOs": automobileVOs},
         encoder=AutomobileVOListEncoder,
     )
