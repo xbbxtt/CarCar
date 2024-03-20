@@ -20,6 +20,10 @@ function TechnicianList() {
 
 
     return (
+      <>
+      <div>
+        <p>Technicians</p>
+      </div>
       <table className="table table-striped">
         <thead>
           <tr>
@@ -50,6 +54,7 @@ function TechnicianList() {
           })}
         </tbody>
       </table>
+      </>
     );
 }
 

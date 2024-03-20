@@ -58,6 +58,10 @@ function AppointmentList() {
     }
 
     return (
+      <>
+      <div>
+        <p>Service appointments</p>
+      </div>
       <table className="table table-striped">
         <thead>
           <tr>
@@ -68,6 +72,11 @@ function AppointmentList() {
             <th>Time</th>
             <th>Technician</th>
             <th>Reason</th>
+            <th>
+                <NavLink className="nav-link active" aria-current="page" to={`/appointments/history/`}>
+                    <button variant="primary">History</button>
+                </NavLink>
+            </th>
             <th>
                 <NavLink className="nav-link active" aria-current="page" to={`/appointments/new/`}>
                     <button variant="primary">Create New Appointment</button>
@@ -108,6 +117,7 @@ function AppointmentList() {
           })}
         </tbody>
       </table>
+      </>
     );
 }
 

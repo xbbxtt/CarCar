@@ -5,6 +5,8 @@ import TechnicianList from './TechnicianList';
 import TechnicianForm from './TechnicianForm';
 import TechnicianDetail from './TechnicianDetail';
 import AppointmentList from './AppointmentList';
+import AppointmentForm from './AppointmentForm';
+import ServiceHistory from './ServiceHistory';
 
 function App() {
   return (
@@ -20,8 +22,8 @@ function App() {
           </Route>
           <Route path="appointments">
             <Route index element={<AppointmentList />} />
-            {/* <Route path="new" element={<TechnicianForm />} />
-            <Route path=":id" element={<TechnicianDetail />} /> */}
+            <Route path="new" element={<AppointmentForm />} />
+            <Route path="history" element={<ServiceHistory />} />
           </Route>
         </Routes>
       </div>
