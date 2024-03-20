@@ -13,10 +13,7 @@ function TechnicianForm() {
         const value = event.target.value;
         const inputName = event.target.name;
         setFormData({
-        //Previous form data is spread (i.e. copied) into our new state object
             ...formData,
-
-        //On top of the that data, we add the currently engaged input key and value
             [inputName]: value
         });
     }
