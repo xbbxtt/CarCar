@@ -23,8 +23,8 @@ function App() {
           <Route path="appointments">
             <Route index element={<AppointmentList />} />
             <Route path="new" element={<AppointmentForm />} />
-            <Route path="history" element={<ServiceHistory />} />
           </Route>
+          <Route path="history" element={<ServiceHistory />} />
         </Routes>
       </div>
     </BrowserRouter>

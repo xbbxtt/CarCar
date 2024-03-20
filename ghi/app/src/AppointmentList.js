@@ -73,9 +73,6 @@ function AppointmentList() {
             <th>Technician</th>
             <th>Reason</th>
             <th>
-                <NavLink className="nav-link active" aria-current="page" to={`/appointments/history/`}>
-                    <button variant="primary">History</button>
-                </NavLink>
             </th>
             <th>
                 <NavLink className="nav-link active" aria-current="page" to={`/appointments/new/`}>
