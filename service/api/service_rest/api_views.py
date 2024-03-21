@@ -43,7 +43,7 @@ def api_list_technicians(request):
         )
 
 
-@require_http_methods(["DELETE", "GET", "PUT"])
+@require_http_methods(["DELETE", "GET"])
 def api_show_technician(request, pk):
     if request.method == "GET":
         try:
