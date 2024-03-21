@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 
 
 function ServiceHistory() {
-    //fetch appointments
     const [appointments, setAppointments] = useState([])
 
     const getData = async () => {
@@ -17,7 +16,6 @@ function ServiceHistory() {
       getData()
     }, [])
 
-    //fetch automobileVOs for vin conpare
     const [automobileVOs, setAutomobileVOs] = useState([])
 
     const getAutomobileVOsData = async () => {
@@ -32,10 +30,8 @@ function ServiceHistory() {
         getAutomobileVOsData()
     }, [])
 
-    //catch input in the search bar
     const [query, setQuery] = useState("")
 
-    //prevent appointment.technician undefined error
     for (const appointment of appointments) {
         if(appointment.technician === undefined) {
             return(
@@ -69,11 +65,9 @@ function ServiceHistory() {
             </thead>
             <tbody>
             {appointments.filter(appointment => appointment.vin.toLowerCase().includes(query)).map(appointment => {
-                //split date and time from date_time
                 const datetime = new Date(appointment.date_time)
                 const date = datetime.toLocaleDateString()
                 const time = datetime.toLocaleTimeString()
-                //conpare vin to decide VIP
                 let VIP = "No"
                 for (const automobileVO of automobileVOs){
                     if (appointment.vin === automobileVO.vin) {

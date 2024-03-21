@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 
 
 function AppointmentForm() {
-    //fetch technician for select options
     const [technicians, setTechnicians] = useState([])
 
     const getData = async () => {
@@ -39,7 +38,6 @@ function AppointmentForm() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const appointmentUrl = 'http://localhost:8080/api/appointments/';
-        //combine date and time to date_time
         const newFormData = {
             vin: '',
             customer: '',

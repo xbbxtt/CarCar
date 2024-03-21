@@ -4,14 +4,11 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 function TechnicianDetail() {
     const [technician, setTechnician] = useState([])
-    //pass technician id from APP.js
     const {id} = useParams()
-    //redirect
     const nav = useNavigate()
 
     const getData = async () => {
       const response = await fetch(`http://localhost:8080/api/technicians/${id}/`);
-
       if (response.ok) {
         const data = await response.json();
         setTechnician(data)
@@ -22,7 +19,6 @@ function TechnicianDetail() {
       getData()
     }, [])
 
-    //delete function
     async function deleteTechnician() {
         await fetch(`http://localhost:8080/api/technicians/${id}/`, { method: 'DELETE' });
         alert('Delete successful');

@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 
 
 function TechnicianForm() {
-
     const [formData, setFormData] = useState({
         employee_id: '',
         first_name: '',

@@ -21,10 +21,12 @@ class Appointment(models.Model):
     status = models.CharField(max_length=50)
     customer = models.CharField(max_length=50)
     vin = models.CharField(max_length=50)
+
     technician = models.ForeignKey(
         Technician,
         related_name="appointment",
         on_delete=models.CASCADE,
     )
+
     class Meta:
         ordering = ("date_time",)

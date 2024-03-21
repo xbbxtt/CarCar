@@ -10,6 +10,7 @@ from .api_views import (
                         api_list_automobileVOs,
                         )
 
+
 urlpatterns = [
     path("technicians/", api_list_technicians, name="api_list_technicians"),
     path("technicians/<int:pk>/", api_show_technician, name="api_show_technician"),

@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 
 
 function AutomobileForm() {
-    //fetch models for select options
     const [models, setModels] = useState([])
 
     const getData = async () => {
