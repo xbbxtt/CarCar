@@ -11,7 +11,7 @@ class Technician(models.Model):
 
 
 class AutomobileVO(models.Model):
-    vin = models.CharField(max_length=50)
+    vin = models.CharField(max_length=50, unique=True)
     sold = models.BooleanField()
 
 
