@@ -45,7 +45,7 @@ function ServiceHistory() {
     return (
       <>
         <div>
-            <p>Service History</p>
+            <h1>Service History</h1>
         </div>
         <div>
             <input type='text' placeholder='Search VIN...' className='search' onChange={(e) => setQuery(e.target.value)} />

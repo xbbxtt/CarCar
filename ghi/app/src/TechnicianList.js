@@ -22,7 +22,7 @@ function TechnicianList() {
     return (
       <>
       <div>
-        <p>Technicians</p>
+        <h1>Technicians</h1>
       </div>
       <table className="table table-striped">
         <thead>

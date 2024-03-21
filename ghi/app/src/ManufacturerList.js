@@ -20,7 +20,7 @@ function ManufacturerList() {
     return (
       <>
       <div>
-        <p>Manufacturers</p>
+        <h1>Manufacturers</h1>
       </div>
       <table className="table table-striped">
         <thead>

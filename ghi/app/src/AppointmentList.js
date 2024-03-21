@@ -60,7 +60,7 @@ function AppointmentList() {
     return (
       <>
       <div>
-        <p>Service appointments</p>
+        <h1>Service appointments</h1>
       </div>
       <table className="table table-striped">
         <thead>
