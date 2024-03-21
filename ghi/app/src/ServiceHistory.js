@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 function ServiceHistory() {
     //fetch appointments
     const [appointments, setAppointments] = useState([])
+
     const getData = async () => {
       const response = await fetch('http://localhost:8080/api/appointments/');
       if (response.ok) {
@@ -11,12 +12,14 @@ function ServiceHistory() {
         setAppointments(data.appointments)
       }
     }
+
     useEffect(()=>{
       getData()
     }, [])
 
     //fetch automobileVOs for vin conpare
     const [automobileVOs, setAutomobileVOs] = useState([])
+
     const getAutomobileVOsData = async () => {
       const response = await fetch('http://localhost:8080/api/automobileVOs/');
       if (response.ok) {
@@ -24,6 +27,7 @@ function ServiceHistory() {
         setAutomobileVOs(data.automobileVOs)
       }
     }
+
     useEffect(()=>{
         getAutomobileVOsData()
     }, [])
@@ -31,7 +35,7 @@ function ServiceHistory() {
     //catch input in the search bar
     const [query, setQuery] = useState("")
 
-    //add loading message while appointment.technician is undefined
+    //prevent appointment.technician undefined error
     for (const appointment of appointments) {
         if(appointment.technician === undefined) {
             return(

@@ -18,7 +18,6 @@ function TechnicianList() {
       getData()
     }, [])
 
-
     return (
       <>
       <div>

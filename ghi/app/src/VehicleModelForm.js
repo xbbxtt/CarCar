@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from 'react';
 
+
 function VehicleModelForm() {
     const [manufacturers, setManufacturers] = useState([])
+
     const getData = async () => {
         const manufacturersurl = 'http://localhost:8100/api/manufacturers/';
         const response = await fetch(manufacturersurl);
@@ -10,6 +12,7 @@ function VehicleModelForm() {
         setManufacturers(data.manufacturers);
         }
     }
+
     useEffect(() => {
         getData();
     }, []);
@@ -40,9 +43,7 @@ function VehicleModelForm() {
                 'Content-Type': 'application/json',
             },
         };
-
         const response = await fetch(vehicleModelUrl, fetchConfig);
-
         if (response.ok) {
             setFormData({
                 name: '',

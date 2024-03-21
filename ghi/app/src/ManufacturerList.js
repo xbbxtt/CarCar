@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 
 function ManufacturerList() {
+
     const [manufacturers, setManufacturers] = useState([])
 
     const getData = async () => {

@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 function AppointmentList() {
     //fetch appointments
     const [appointments, setAppointments] = useState([])
+
     const getData = async () => {
       const response = await fetch('http://localhost:8080/api/appointments/');
       if (response.ok) {
@@ -12,6 +13,7 @@ function AppointmentList() {
         setAppointments(data.appointments)
       }
     }
+
     useEffect(()=>{
       getData()
     }, [])

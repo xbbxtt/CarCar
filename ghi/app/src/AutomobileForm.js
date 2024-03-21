@@ -1,7 +1,10 @@
 import React, {useState, useEffect} from 'react';
 
+
 function AutomobileForm() {
+    //fetch models for select options
     const [models, setModels] = useState([])
+
     const getData = async () => {
         const modelsurl = 'http://localhost:8100/api/models/';
         const response = await fetch(modelsurl);
@@ -10,6 +13,7 @@ function AutomobileForm() {
         setModels(data.models);
         }
     }
+
     useEffect(() => {
         getData();
     }, []);
@@ -41,9 +45,7 @@ function AutomobileForm() {
                 'Content-Type': 'application/json',
             },
         };
-
         const response = await fetch(vautomobileUrl, fetchConfig);
-
         if (response.ok) {
             setFormData({
                 color: '',

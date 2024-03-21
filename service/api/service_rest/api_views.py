@@ -160,6 +160,7 @@ def api_list_appointments(request):
             safe=False,
         )
 
+
 @require_http_methods(["DELETE", "GET"])
 def api_show_appointment(request, pk):
     if request.method == "GET":
@@ -190,6 +191,7 @@ def api_show_appointment(request, pk):
                     status=400,
                 )
 
+
 @require_http_methods(["PUT"])
 def api_cancel_appointment(request, pk):
     try:
@@ -207,6 +209,7 @@ def api_cancel_appointment(request, pk):
                 status=400,
             )
 
+
 @require_http_methods(["PUT"])
 def api_finish_appointment(request, pk):
     try:
@@ -223,6 +226,7 @@ def api_finish_appointment(request, pk):
                 {"message": "Appointment does not exist"},
                 status=400,
             )
+
 
 @require_http_methods(["GET"])
 def api_list_automobileVOs(request):

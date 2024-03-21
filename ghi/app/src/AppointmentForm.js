@@ -1,7 +1,10 @@
 import React, {useState, useEffect} from 'react';
 
+
 function AppointmentForm() {
+    //fetch technician for select options
     const [technicians, setTechnicians] = useState([])
+
     const getData = async () => {
         const technicianurl = 'http://localhost:8080/api/technicians/';
         const response = await fetch(technicianurl);
@@ -10,6 +13,7 @@ function AppointmentForm() {
         setTechnicians(data.technicians);
         }
     }
+
     useEffect(() => {
         getData();
     }, []);
@@ -35,6 +39,7 @@ function AppointmentForm() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const appointmentUrl = 'http://localhost:8080/api/appointments/';
+        //combine date and time to date_time
         const newFormData = {
             vin: '',
             customer: '',
@@ -54,9 +59,7 @@ function AppointmentForm() {
                 'Content-Type': 'application/json',
             },
         };
-
         const response = await fetch(appointmentUrl, fetchConfig);
-
         if (response.ok) {
             setFormData({
                 vin: '',

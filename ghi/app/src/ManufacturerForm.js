@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 
+
 function ManufacturerForm() {
 
-    //create form & handle form change
     const [formData, setFormData] = useState({
         name: '',
     })
@@ -16,12 +16,9 @@ function ManufacturerForm() {
         });
     }
 
-    //handle submit
     const handleSubmit = async (event) => {
         event.preventDefault();
-
         const technicianUrl = 'http://localhost:8100/api/manufacturers/';
-
         const fetchConfig = {
             method: "post",
             body: JSON.stringify(formData),
@@ -29,9 +26,7 @@ function ManufacturerForm() {
                 'Content-Type': 'application/json',
             },
         };
-
         const response = await fetch(technicianUrl, fetchConfig);
-
         if (response.ok) {
             setFormData({
                 name: '',

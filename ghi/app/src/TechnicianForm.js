@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 
+
 function TechnicianForm() {
 
-    //create form & handle form change
     const [formData, setFormData] = useState({
         employee_id: '',
         first_name: '',
@@ -18,12 +18,9 @@ function TechnicianForm() {
         });
     }
 
-    //handle submit
     const handleSubmit = async (event) => {
         event.preventDefault();
-
         const technicianUrl = 'http://localhost:8080/api/technicians/';
-
         const fetchConfig = {
             method: "post",
             body: JSON.stringify(formData),
@@ -31,9 +28,7 @@ function TechnicianForm() {
                 'Content-Type': 'application/json',
             },
         };
-
         const response = await fetch(technicianUrl, fetchConfig);
-
         if (response.ok) {
             setFormData({
                 employee_id: '',
@@ -42,7 +37,6 @@ function TechnicianForm() {
             });
         }
     }
-
 
   return (
     <div className="row">

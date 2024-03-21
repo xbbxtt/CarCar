@@ -1,6 +1,6 @@
 from django.db import models
 
-# Create your models here.
+
 class Technician(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
@@ -9,9 +9,11 @@ class Technician(models.Model):
     class Meta:
         ordering = ("employee_id",)
 
+
 class AutomobileVO(models.Model):
     vin = models.CharField(max_length=50)
     sold = models.BooleanField()
+
 
 class Appointment(models.Model):
     date_time = models.DateTimeField()

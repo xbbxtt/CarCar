@@ -17,7 +17,8 @@ function AutomobileList() {
       getData()
     }, [])
 
-for (const automobile of automobiles) {
+    //prevent automobile.model undefined error
+    for (const automobile of automobiles) {
         if(automobile.model === undefined) {
             return(
                 <p>Loading</p>

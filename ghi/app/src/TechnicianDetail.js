@@ -2,11 +2,9 @@ import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
 
-
-
 function TechnicianDetail() {
     const [technician, setTechnician] = useState([])
-    //pass shoe id from APP.js
+    //pass technician id from APP.js
     const {id} = useParams()
     //redirect
     const nav = useNavigate()
@@ -24,14 +22,12 @@ function TechnicianDetail() {
       getData()
     }, [])
 
-
     //delete function
     async function deleteTechnician() {
         await fetch(`http://localhost:8080/api/technicians/${id}/`, { method: 'DELETE' });
         alert('Delete successful');
         nav("/technicians")
     }
-
 
     return (
       <table className="table table-striped">
