@@ -214,6 +214,54 @@ The AutomobileVO is a value object that gets data about the automobiles in the i
 
 The intergration of the two microservices is that when recording a new sale, you'll need to choose which car is being sold and that information lives inside of the inventory microservice.
 
+It includes models for Customers, Salespeople and Sales, those are capable of the following actions and have the listed properties.
+
+### Customers:
+
+Properties:
+first_name
+last_name
+address
+phone_numbers
+
+| Action | Method | URL
+| ----------- | ----------- | ----------- |
+| List customers | GET | http://localhost:8090/api/customers/
+| Create a customer | POST | http://localhost:8090/api/customers/new/
+| Show a specific customer | GET | http://localhost:8090/api/customers/{id}/
+| Delete a customer | DELETE | http://localhost:8090/api/customers/
+
+### Salespeople:
+
+Properties:
+first_name
+last_name
+employee_id
+
+
+| Action | Method | URL
+| ----------- | ----------- | ----------- |
+| List salespeople | GET | http://localhost:8090/api/salespeople/
+| Salesperson details | GET | http://localhost:8090/api/salesperson/{id}/
+| Create a salesperson | POST | http://localhost:8090/api/salespeople/new/
+| Delete a salesperson | DELETE | http://localhost:8090/api/salesperson/
+
+
+### Sales:
+
+Properties:
+price
+automobile
+salesperson
+customer
+
+
+| Action | Method | URL
+| ----------- | ----------- | ----------- |
+| List all sales | GET | http://localhost:8090/api/sales/
+| Create a new sale | POST | http://localhost:8090/api/sales/new/
+| Show specific sale | GET | http://localhost:8090/api/sales/{id}/
+| Delete a sale | DELETE | http://localhost:8090/api/sales/
 
 
 ## Inventory microservice
