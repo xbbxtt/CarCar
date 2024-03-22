@@ -1,9 +1,8 @@
 import  { useState, useEffect} from 'react';
-import { useNavigate } from 'react-router-dom';
+
 
 function CustomerList() {
     const [customer, setCustomer] = useState ([])
-    const nav = useNavigate()
 
     const getData = async () => {
         const response = await fetch ('http://localhost:8090/api/customers/')
@@ -20,10 +19,10 @@ function CustomerList() {
       getData()
     }, []);
 
-    async function deleteCustomer() {
-      await fetch(`http://localhost:8080/api/customers/`, { method: 'DELETE' });
+    async function deleteCustomer(id) {
+      await fetch(`http://localhost:8090/api/customers/${id}/`, { method: 'DELETE' });
       alert('Delete successful');
-      nav("/customers")
+      window.location.reload()
     }
 
 
@@ -50,7 +49,7 @@ function CustomerList() {
                   <td>{ tech.address }</td>
                   <td>{ tech.phone_number }</td>
                   <td>
-                    <button onClick={() => deleteCustomer()}>Delete</button>
+                    <button onClick={() => deleteCustomer(tech.id)}>Delete</button>
                   </td>
                 </tr>
               );

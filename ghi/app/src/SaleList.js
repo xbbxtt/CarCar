@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+
 
 function SaleList() {
     const [sales, setSales] = useState([]);
-    const nav = useNavigate()
 
     const getData = async () => {
         try {
             const response = await fetch('http://localhost:8090/api/sales/');
             if (response.ok) {
-                const { sale: fetchedSales } = await response.json(); // Rename to fetchedSales
-                setSales(fetchedSales);
+                const { sale } = await response.json();
+                setSales(sale);
             } else {
                 console.error('An error occurred fetching the data');
             }
@@ -23,11 +22,11 @@ function SaleList() {
         getData();
     }, []);
 
-    async function deleteSale() {
-        await fetch(`http://localhost:8080/api/sale/`, { method: 'DELETE' });
+    async function deleteSale(id) {
+        await fetch(`http://localhost:8090/api/sales/${id}/`, { method: 'DELETE' });
         alert('Delete successful');
-        nav("/sale")
-      }
+        window.location.reload()
+    }
 
 
     return (
@@ -45,14 +44,14 @@ function SaleList() {
                         </tr>
                     </thead>
                     <tbody>
-                        {sales.map(sale => (
+                        {sales?.map(sale => (
                             <tr key={sale.id}>
                                 <td>{sale.price}</td>
-                                <td>{sale.automobile}</td>
-                                <td>{sale.salesperson}</td>
-                                <td>{sale.customer}</td>
+                                <td>{sale.automobile.vin}</td>
+                                <td>{sale.salesperson.first_name} {sale.salesperson.last_name}</td>
+                                <td>{sale.customer.first_name} {sale.customer.last_name}</td>
                                 <td>
-                                    <button onClick={() => deleteSale()}>Delete</button>
+                                    <button onClick={() => deleteSale(sale.id)}>Delete</button>
                                 </td>
                             </tr>
                         ))}

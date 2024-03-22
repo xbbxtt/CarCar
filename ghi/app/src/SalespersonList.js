@@ -1,9 +1,8 @@
 import  { useState, useEffect} from 'react';
-import { useNavigate } from 'react-router-dom';
+
 
 function SalepersonList() {
     const [salesperson, setSalesperson] = useState ([])
-    const nav = useNavigate()
 
     const getData = async () => {
         const response = await fetch ('http://localhost:8090/api/salespeople/')
@@ -20,10 +19,10 @@ function SalepersonList() {
       getData()
     }, []);
 
-    async function deleteSalesperson() {
-      await fetch(`http://localhost:8080/api/salespeople/`, { method: 'DELETE' });
+    async function deleteSalesperson(id) {
+      await fetch(`http://localhost:8090/api/salespeople/${id}/`, { method: 'DELETE' });
       alert('Delete successful');
-      nav("/salespeople")
+      window.location.reload()
     }
 
   return (
@@ -47,7 +46,7 @@ function SalepersonList() {
                   <td>{ tech.last_name }</td>
                   <td>{ tech.employee_id }</td>
                   <td>
-                    <button onClick={() => deleteSalesperson()}>Delete</button>
+                    <button onClick={() => deleteSalesperson(tech.id)}>Delete</button>
                   </td>
                 </tr>
               );

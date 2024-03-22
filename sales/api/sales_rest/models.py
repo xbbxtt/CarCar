@@ -29,7 +29,7 @@ class Customer(models.Model):
 
 
 class Sale(models.Model):
-    price = models.DecimalField(max_digits=100, decimal_places=2)
+    price = models.IntegerField(null=True)
     automobile = models.ForeignKey(
         AutomobileVO,
         related_name="automobile",

@@ -7,16 +7,17 @@ function SaleForm() {
     const [ automobiles, setAutomobiles ] = useState([])
     const [ salesperson, setSalesperson ] = useState('');
     const [ customer, setCustomer ] = useState('');
+    const [ customers, setCustomers ] = useState([])
+    const [ salespeople, setSalespeople ] = useState([])
 
-    const fetchData = async () => {
+    const fetchDataOne = async () => {
       try {
         const url = 'http://localhost:8100/api/automobiles/';
         const response = await fetch(url);
 
         if (response.ok) {
           const data = await response.json();
-          console.log("DATA",data)
-          setAutomobiles(data.automobiles);
+          setAutomobiles(data.autos);
         }
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -24,7 +25,43 @@ function SaleForm() {
     };
 
     useEffect(() => {
-      fetchData();
+      fetchDataOne();
+    }, []);
+
+    const fetchDataTwo = async () => {
+      try {
+        const url = 'http://localhost:8090/api/customers/';
+        const response = await fetch(url);
+
+        if (response.ok) {
+          const data = await response.json();
+          setCustomers(data.customer);
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    useEffect(() => {
+      fetchDataTwo();
+    }, []);
+
+    const fetchDataThree = async () => {
+      try {
+        const url = 'http://localhost:8090/api/salespeople/';
+        const response = await fetch(url);
+
+        if (response.ok) {
+          const data = await response.json();
+          setSalespeople(data.salesperson);
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    useEffect(() => {
+      fetchDataThree();
     }, []);
 
     const handleSubmit = async (event) => {
@@ -120,31 +157,47 @@ function SaleForm() {
                   )}
                 </select>
               </div>
-              <div className="form-floating mb-3">
-                <input
+              <div className="mb-3">
+                <select
                   onChange={handleChangeSalesperson}
                   value={salesperson}
-                  placeholder="Salesperson"
                   required
-                  type="text"
                   name="salesperson"
                   id="salesperson"
-                  className="form-control"
-                />
-                <label htmlFor="salesperson">Salesperson</label>
+                  className="form-select"
+                >
+                  <option value="">Choose an sales person</option>
+                  {salespeople ? (
+                    salespeople.map(man => (
+                      <option key={man.id} value={man.id}>
+                        {man.first_name} {man.last_name}
+                      </option>
+                    ))
+                  ) : (
+                    <option>Loading...</option>
+                  )}
+                </select>
               </div>
-              <div className="form-floating mb-3">
-                <input
+              <div className="mb-3">
+                <select
                   onChange={handleChangeCustomer}
                   value={customer}
-                  placeholder="Customer"
                   required
-                  type="text"
                   name="customer"
                   id="customer"
-                  className="form-control"
-                />
-                <label htmlFor="customer">Customer</label>
+                  className="form-select"
+                >
+                  <option value="">Choose an customer</option>
+                  {customers ? (
+                    customers.map(man => (
+                      <option key={man.id} value={man.id}>
+                        {man.first_name} {man.last_name}
+                      </option>
+                    ))
+                  ) : (
+                    <option>Loading...</option>
+                  )}
+                </select>
               </div>
               <button className="btn btn-primary">Create</button>
             </form>
