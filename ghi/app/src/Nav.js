@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 
+
 function Nav() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-success">
@@ -39,6 +40,27 @@ function Nav() {
               <NavLink className="nav-link active" aria-current="page" to="customers/new">
               New Customer
               </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" aria-current="page" to="/">Home</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/technicians">Technician List</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/appointments">Appointment List</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/history">Service History</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/manufacturers">Manufacturer List</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/vehiclemodels">Vehicle Model List</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/automobiles">Automobile List</NavLink>
             </li>
           </ul>
         </div>
