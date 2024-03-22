@@ -10,13 +10,11 @@ function App() {
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="customers" element={<CustomerList />} />
-          <Route path="customers/create" element={<CustomerForm />} />
+          <Route path="customers/new" element={<CustomerForm />} />
           <Route path="sales" element={<SaleList />} />
-          <Route path="sales/create" element={<SaleForm />} />
+          <Route path="sales/new" element={<SaleForm />} />
           <Route path="salespeople" element={<SalespersonList />} />
-          <Route path="salespeople/create" element={<SalespersonForm />} />
-          <Route path="automobiles" element={<AutomobileList />} />
-          <Route path="automobiles/create" element={<AutomobileForm />} />
+          <Route path="salespeople/new" element={<SalespersonForm />} />
         </Routes>
       </div>
     </BrowserRouter>
