@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function SaleList() {
     const [sales, setSales] = useState([]);
+    const nav = useNavigate()
 
     const getData = async () => {
         try {
@@ -20,6 +22,13 @@ function SaleList() {
     useEffect(() => {
         getData();
     }, []);
+
+    async function deleteSale() {
+        await fetch(`http://localhost:8080/api/sale/`, { method: 'DELETE' });
+        alert('Delete successful');
+        nav("/sale")
+      }
+
 
     return (
         <div className="my-5 container">
@@ -42,6 +51,9 @@ function SaleList() {
                                 <td>{sale.automobile}</td>
                                 <td>{sale.salesperson}</td>
                                 <td>{sale.customer}</td>
+                                <td>
+                                    <button onClick={() => deleteSale()}>Delete</button>
+                                </td>
                             </tr>
                         ))}
                     </tbody>

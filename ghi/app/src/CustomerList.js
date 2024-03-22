@@ -1,7 +1,9 @@
 import  { useState, useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function CustomerList() {
     const [customer, setCustomer] = useState ([])
+    const nav = useNavigate()
 
     const getData = async () => {
         const response = await fetch ('http://localhost:8090/api/customers/')
@@ -14,9 +16,16 @@ function CustomerList() {
     }
 
 
-useEffect(()=> {
-    getData()
-  }, []);
+    useEffect(()=> {
+      getData()
+    }, []);
+
+    async function deleteCustomer() {
+      await fetch(`http://localhost:8080/api/customers/`, { method: 'DELETE' });
+      alert('Delete successful');
+      nav("/customers")
+    }
+
 
   return (
     <div className="my-5 container">
@@ -40,6 +49,9 @@ useEffect(()=> {
                   <td>{ tech.last_name }</td>
                   <td>{ tech.address }</td>
                   <td>{ tech.phone_number }</td>
+                  <td>
+                    <button onClick={() => deleteCustomer()}>Delete</button>
+                  </td>
                 </tr>
               );
             })}

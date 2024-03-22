@@ -5,8 +5,8 @@ from django.shortcuts import render
 from django.views.decorators.http import require_http_methods
 from django.http import JsonResponse
 import json
-from .encoders import AutomobileVOEncoder, SalespersonEncoder, CustomerEncoder, SaleEncoder
-from .models import AutomobileVO, Customer, Sale, Salesperson
+from .encoders import SalespersonEncoder, CustomerEncoder, SaleEncoder
+from .models import Customer, Sale, Salesperson
 
 
 @require_http_methods(["GET", "POST"])

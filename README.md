@@ -3,7 +3,7 @@
 Team:
 
 * Shiran Xiao - Automobile Service microservice
-* Person 2 - Which microservice?
+* Key Gomez - Sales microservice
 
 ## Design
 
@@ -208,8 +208,12 @@ Show service history list       http://localhost:3000/history/
 
 ## Sales microservice
 
-Explain your models and integration with the inventory
-microservice, here.
+On the backend, the sales microservice has 4 models: AutomobileVO, Customer, SalesPerson, and SalesRecord. SalesRecord is the model that interacts with the other three models. This model gets data from the three other models.
+
+The AutomobileVO is a value object that gets data about the automobiles in the inventory using a poller. The sales poller automotically polls the inventory microservice for data, so the sales microservice is constantly getting the updated data.
+
+The intergration of the two microservices is that when recording a new sale, you'll need to choose which car is being sold and that information lives inside of the inventory microservice.
+
 
 
 ## Inventory microservice
